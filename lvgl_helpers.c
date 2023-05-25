@@ -178,6 +178,7 @@ bool lvgl_spi_driver_init(int host,
     #if defined (CONFIG_IDF_TARGET_ESP32C3)
     dma_channel = SPI_DMA_CH_AUTO;
     #endif
+    dma_channel = SPI_DMA_CH_AUTO;
     esp_err_t ret = spi_bus_initialize(host, &buscfg, (spi_dma_chan_t)dma_channel);
     assert(ret == ESP_OK);
 
