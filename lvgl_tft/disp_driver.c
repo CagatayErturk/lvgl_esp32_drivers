@@ -7,6 +7,8 @@
 #include "esp_lcd_backlight.h"
 #include "sdkconfig.h"
 
+disp_backlight_h bckl_handle;
+
 void *disp_driver_init(void)
 {
 #if defined CONFIG_LV_TFT_DISPLAY_CONTROLLER_ILI9341
@@ -65,7 +67,7 @@ void *disp_driver_init(void)
         .timer_idx = 0,
         .channel_idx = 0 // @todo this prevents us from having two PWM controlled displays
     };
-    disp_backlight_h bckl_handle = disp_backlight_new(&bckl_config);
+    bckl_handle = disp_backlight_new(&bckl_config);
     disp_backlight_set(bckl_handle, 100);
     return bckl_handle;
 #else
