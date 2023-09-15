@@ -8,6 +8,7 @@
 #include "sdkconfig.h"
 
 disp_backlight_h bckl_handle;
+extern uint8_t backlight;
 
 void *disp_driver_init(void)
 {
@@ -68,7 +69,7 @@ void *disp_driver_init(void)
         .channel_idx = 0 // @todo this prevents us from having two PWM controlled displays
     };
     bckl_handle = disp_backlight_new(&bckl_config);
-    disp_backlight_set(bckl_handle, 100);
+    disp_backlight_set(bckl_handle, backlight);
     return bckl_handle;
 #else
     return NULL;
